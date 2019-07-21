@@ -6,15 +6,15 @@ public class VendingMachine {
 	private int price;
 	//private List[] products = new ArrayList[Can.PRODUCT_CNT];
 	
-	List<Can> colaList = new ArrayList();
-	List<Can> cidaList = new ArrayList();
-	List<Can> sikList = new ArrayList();
-	List<Can> fantaList = new ArrayList();
-	List<Can> cantataList = new ArrayList();
+	List<Can> colaList = new ArrayList(); //0
+	List<Can> cidaList = new ArrayList(); //1
+	List<Can> sikList = new ArrayList(); //2
+	List<Can> fantaList = new ArrayList(); //3
+	List<Can> cantataList = new ArrayList(); //4
 		
 	//생성자
 	public VendingMachine() {
-		for(int i=0; i<Can.PRODUCT_CNT; i++) { //제품 구분
+		for(int i=0; i<Can.PRODUCT_CNT; i++) { //제품 구분			
 			for(int z=0; z<INIT_QTY; z++) {	//재고 (10개씩)			
 				Can c = new Can(i);				
 				switch(i) {
@@ -86,25 +86,31 @@ public class VendingMachine {
 	public boolean puchase(int i) {
 		int qty = getProductQty(i);		
 		if(qty > 0) {
+			Can c = null;
 			switch(i) {
 				case 0:
-					colaList.remove(colaList.size() - 1);
+					c = colaList.get(0);
+					colaList.remove(c);
 					break;
 				case 1:
-					cidaList.remove(cidaList.size() - 1);
+					c = cidaList.get(0);
+					cidaList.remove(c);
 					break;
 				case 2:
-					sikList.remove(sikList.size() - 1);
+					c = sikList.get(0);
+					sikList.remove(c);
 					break;
 				case 3:
-					fantaList.remove(fantaList.size() - 1);
+					c = fantaList.get(0);
+					fantaList.remove(c);
 					break;
 				case 4:
-					cantataList.remove(cantataList.size() - 1);
+					c = cantataList.get(0);
+					cantataList.remove(c);
 					break;						
 			}
 			
-			price -= Can.productPriceArray[i];
+			price -= c.productPrice;
 			return true;
 		}		
 		return false;
@@ -121,20 +127,4 @@ public class VendingMachine {
 		}
 	}
 	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

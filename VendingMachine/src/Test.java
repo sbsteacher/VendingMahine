@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class Test {
 
 	public static void main(String[] args) {
-		VendingMachine vm = new VendingMachine();
+		
+		VendingMachine2 vm = new VendingMachine2();
 		Scanner scan = new Scanner(System.in);
 		System.out.print("금액을 주입해 주세요 : ");
 		int price = scan.nextInt();		
-		vm.insertPrice(price);
-		
+		vm.insertPrice(price);		
 		
 		while(true) {
 			vm.displayProductList();
@@ -18,7 +18,7 @@ public class Test {
 			if(choice == 0) {
 				vm.displayChange();
 				break;
-			} else if(choice > 5 || choice < 0) {
+			} else if(choice > Can.PRODUCT_CNT || choice < 0) {
 				System.out.println("잘 못 선택하셨습니다.");
 				continue;
 			}
@@ -31,14 +31,8 @@ public class Test {
 			vm.displayChange();
 		}
 		
-		
-		
-		
-		
-		
-		
-		
 		scan.close();
+		
 	}
 
 }
